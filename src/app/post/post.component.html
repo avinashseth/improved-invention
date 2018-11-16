@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <div *ngIf="post">
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.body }}</p>
+      <p><a (click)="likePost(post.id)" class="btn btn-link"><i class="fa fa-heart" style="color: #F44336;"></i> {{
+          likes }} people like this</a></p>
+      <div class="media" *ngFor="let comment of
+  comments; let i = index">
+        <div class="media-body">
+          <p><strong>{{ comment.user }}</strong></p>
+          <p>{{
+            comment.comment }}</p>
+          <p><a (click)="likeComment(i)" class="btn btn-link"><i class="fa fa-heart" style="color: #F44336;"></i> {{
+              comment.likes }} people like this</a></p>
+        </div>
+      </div>
+      <p class="float-right">
+        <a routerLink="/post/{{ post.id }}/edit" class="btn btn-info"><i class="fa fa-edit"></i>
+          Edit</a>&nbsp;
+        <button class="btn btn-danger" (click)="deletePost(post.id)"><i class="fa fa-trash"></i></button>
+      </p>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
